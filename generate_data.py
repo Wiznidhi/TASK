@@ -15,7 +15,7 @@ class DataGenerator:
         self.num_rows = num_rows
 
     def generate_data(self) -> pd.DataFrame:
-        emp_ids = [i + 1 for i in range(self.num_rows)]
+        emp_ids = [f"ZMX{i+1}" for i in range(self.num_rows)]
         names = [fake.name() for _ in range(self.num_rows)]
         salaries = [round(random.uniform(20000, 200000), 2) for _ in range(self.num_rows)]
         start_date = datetime(2020, 1, 1)
