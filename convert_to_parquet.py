@@ -14,10 +14,8 @@ class ParquetConverter:
         df.to_parquet(self.parquet_file, engine="pyarrow", index=False)
         logging.info(f"Parquet file saved: {self.parquet_file}")
 
-
 def main():
     ParquetConverter("employee_data.xlsx", "employee_data.parquet").convert()
-
 
 if __name__ == "__main__":
     main()

@@ -9,25 +9,38 @@ logging.basicConfig(level=logging.INFO)
 
 fake = Faker()
 
-
 class DataGenerator:
-    def __init__(self, num_rows=1_000_000):
+
+    def __init__(self, num_rows=1000):
         self.num_rows = num_rows
 
-    def generate_data(self) -> pd.DataFrame:
+    def generate_id(self) -> str:
         emp_ids = [f"ZMX{i+1}" for i in range(self.num_rows)]
+        return emp_ids
+
+    def generate_name(self) -> str:
         names = [fake.name() for _ in range(self.num_rows)]
+        return names
+
+    def generate_salary(self) -> float:
         salaries = [round(random.uniform(20000, 200000), 2) for _ in range(self.num_rows)]
+        return salaries
+
+    def generate_date(self) -> list[datetime]:
         start_date = datetime(2020, 1, 1)
+
         salary_dates = [
-            start_date + timedelta(days=random.randint(0, (datetime.today() - start_date).days))
-            for _ in range(self.num_rows)
+            (start_date + timedelta(days=random.randint(0, (datetime.today() - start_date).days))).strftime("%Y-%m-%d") for _ in range(self.num_rows)
         ]
+        return salary_dates
+
+    def generate_data(self) -> pd.DataFrame:
+
         df = pd.DataFrame({
-            "empid": emp_ids,
-            "name": names,
-            "salary": salaries,
-            "salary_date": salary_dates
+            "empid": self.generate_id(),
+            "name": self.generate_name(),
+            "salary": self.generate_salary(),
+            "salary_date": self.generate_date()
         })
         return df
 
