@@ -1,7 +1,7 @@
 import os
 import logging
 import boto3
-from datetime import date
+from datetime import datetime
 from botocore.exceptions import NoCredentialsError, ClientError
 
 logging.basicConfig(level=logging.INFO)
@@ -26,7 +26,7 @@ class S3Uploader:
 
 def main():
     bucket = "zmx-training-bucketbatch2025"  
-    folder = f"Nidhi/{date.today()}" 
+    folder = f"Nidhi/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
     file_name = "employee_data.parquet"
 
     upload_path = f"{folder}/{file_name}"
