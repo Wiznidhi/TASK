@@ -1,3 +1,9 @@
+"""
+convert_to_parquet.py
+---------------
+Converts excel data to parquet format.
+"""
+
 import pandas as pd
 import logging
 

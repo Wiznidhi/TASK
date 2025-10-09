@@ -1,3 +1,10 @@
+"""
+main.py
+---------------
+Makes calls for all scripts.
+Logs success.
+"""
+
 import generate_data
 import convert_to_parquet
 import upload_to_S3
@@ -8,7 +15,7 @@ logging.basicConfig(level=logging.INFO)
 
 def main():
     logging.info("Step 1: Generating Excel Data")
-    generate_data.main()
+    #generate_data.main()
 
     logging.info("Step 2: Converting Excel to Parquet")
     convert_to_parquet.main()

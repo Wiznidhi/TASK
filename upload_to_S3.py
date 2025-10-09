@@ -1,3 +1,10 @@
+"""
+upload_to_S3.py
+---------------
+Uploads a Parquet file to a AWS S3 bucket.
+Uses boto3 for config.
+"""
+
 import os
 import logging
 import boto3
@@ -28,7 +35,7 @@ class S3Uploader:
             logging.error(f"Upload failed: {e}")
 
 def main():
-    bucket=os.getenv("BUCKET_NAME")
+    bucket=os.getenv("S3_BUCKET_NAME")
     folder = f"Nidhi/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
     file_name = "data/employee_data.parquet"
 

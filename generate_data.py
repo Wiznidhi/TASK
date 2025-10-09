@@ -1,6 +1,12 @@
+"""
+generate_data.py
+---------------
+Generates synthetic data for creating dataset in excel format.
+Uses faker for fake data generation.
+"""
+
 import random
 from datetime import datetime, timedelta
-
 import pandas as pd
 from faker import Faker
 import logging
