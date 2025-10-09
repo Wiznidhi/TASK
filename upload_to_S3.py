@@ -1,4 +1,3 @@
-import os
 import logging
 import boto3
 from datetime import datetime
@@ -11,11 +10,11 @@ class S3Uploader:
         self.bucket_name = bucket_name
         self.s3_client = boto3.client("s3")
 
-    def upload(self, file_name: str, s3_key: str):
+    def upload(self, file_name: str, path: str):
 
         try:
-            self.s3_client.upload_file(file_name, self.bucket_name, s3_key)
-            logging.info(f"Uploaded to S3: s3://{self.bucket_name}/{s3_key}")
+            self.s3_client.upload_file(file_name, self.bucket_name, path)
+            logging.info(f"Uploaded to S3: s3://{self.bucket_name}/{path}")
 
         except FileNotFoundError:
             logging.error(f"File not found: {file_name}")

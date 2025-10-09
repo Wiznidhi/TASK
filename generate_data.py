@@ -7,26 +7,26 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-fake = Faker()
+fake = Faker("en_IN")
 
 class DataGenerator:
 
-    def __init__(self, num_rows=1000):
+    def __init__(self, num_rows=1_000_000):
         self.num_rows = num_rows
 
-    def generate_id(self) -> str:
+    def generate_id(self) -> list[str]:
         emp_ids = [f"ZMX{i+1}" for i in range(self.num_rows)]
         return emp_ids
 
-    def generate_name(self) -> str:
+    def generate_name(self) -> list[str]:
         names = [fake.name() for _ in range(self.num_rows)]
         return names
 
-    def generate_salary(self) -> float:
+    def generate_salary(self) -> list[str]:
         salaries = [round(random.uniform(20000, 200000), 2) for _ in range(self.num_rows)]
         return salaries
 
-    def generate_date(self) -> list[datetime]:
+    def generate_date(self) -> list[str]:
         start_date = datetime(2020, 1, 1)
 
         salary_dates = [
