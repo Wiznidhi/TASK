@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO)
 
 def main():
     logging.info("Step 1: Generating Excel Data")
-    #generate_data.main()
+    generate_data.main()
 
     logging.info("Step 2: Converting Excel to Parquet")
     convert_to_parquet.main()
