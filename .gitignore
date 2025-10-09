@@ -3,3 +3,5 @@ taskenv
 .venv
 __pycache__
 .env
+google-cloud-storage
+pyarrow
