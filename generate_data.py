@@ -11,7 +11,7 @@ fake = Faker("en_IN")
 
 class DataGenerator:
 
-    def __init__(self, num_rows=10):
+    def __init__(self, num_rows=1_000_000):
         self.num_rows = num_rows
 
     def generate_id(self) -> list[str]:

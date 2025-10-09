@@ -29,7 +29,7 @@ class S3Uploader:
 
 def main():
     bucket=os.getenv("BUCKET_NAME")
-    folder = f"Nidhi{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
+    folder = f"Nidhi/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
     file_name = "data/employee_data.parquet"
 
     upload_path = f"{folder}/{file_name}"
