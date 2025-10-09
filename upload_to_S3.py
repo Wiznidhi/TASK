@@ -1,9 +1,13 @@
+import os
 import logging
 import boto3
 from datetime import datetime
+
 from botocore.exceptions import NoCredentialsError, ClientError
+from dotenv import load_dotenv
 
 logging.basicConfig(level=logging.INFO)
+load_dotenv()
 
 class S3Uploader:
     def __init__(self, bucket_name: str):
@@ -24,9 +28,9 @@ class S3Uploader:
             logging.error(f"Upload failed: {e}")
 
 def main():
-    bucket = "zmx-training-bucketbatch2025"  
-    folder = f"Nidhi/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
-    file_name = "employee_data.parquet"
+    bucket=os.getenv("BUCKET_NAME")
+    folder = f"Nidhi{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
+    file_name = "data/employee_data.parquet"
 
     upload_path = f"{folder}/{file_name}"
     S3Uploader(bucket).upload(file_name, upload_path)

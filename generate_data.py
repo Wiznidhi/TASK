@@ -11,7 +11,7 @@ fake = Faker("en_IN")
 
 class DataGenerator:
 
-    def __init__(self, num_rows=1_000_000):
+    def __init__(self, num_rows=10):
         self.num_rows = num_rows
 
     def generate_id(self) -> list[str]:
@@ -49,9 +49,9 @@ class ExcelHandler:
     def __init__(self, dataframe: pd.DataFrame):
         self.dataframe = dataframe
 
-    def save(self, file_name="employee_data.xlsx") -> None:
-        self.dataframe.to_excel(file_name, index=False)
-        logging.info(f"Excel file saved: {file_name}")
+    def save(self, file_path="data/employee_data.xlsx") -> None:
+        self.dataframe.to_excel(file_path, index=False)
+        logging.info(f"Excel file saved: {file_path}")
 
 
 def main():
